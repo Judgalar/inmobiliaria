@@ -1,0 +1,129 @@
+body, html {
+  margin: 0px;
+  height: 100%;
+}
+
+body {
+  background-color: white;
+  font-family: "Freight-Text";
+}
+
+.barNav {
+  background-color: transparent;
+  height: 80px;
+  border-bottom: 1px solid grey;
+  transition: 0.3s;
+}
+.barNav .container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.barNav .container .contenedor {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 20px;
+  border-right: 1px solid grey;
+}
+.barNav .container .contenedor .nav ul {
+  font-size: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style: none;
+  gap: 25px;
+}
+.barNav .container .contenedor .nav ul a {
+  text-decoration: none;
+  color: white;
+}
+.barNav .container .botones {
+  padding-left: 20px;
+  height: 100%;
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+.barNav .container .botones .button1 {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  transition: 0.3s;
+}
+.barNav .container .botones .button1:hover {
+  background-color: #817360;
+  transition: 0.3s;
+}
+.barNav .container .botones .button2 {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  background-color: #817360;
+  border: none;
+  color: white;
+  transition: 0.3s;
+}
+.barNav .container .botones .button2:hover {
+  border: 1px solid white;
+  transition: 0.3s;
+}
+
+.media {
+  box-shadow: 5px 60px 80px #2D2D2D inset;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background-image: url(/img/3Header-web-Gilmar-1920x1026px.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+.media .banner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.media .banner .contenedorBanner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}
+.media .banner .contenedorBajar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10%;
+}
+.media .banner .contenedorBajar button {
+  border: none;
+  background-color: transparent;
+  color: white;
+  transition: 0.3s;
+}
+.media .banner .contenedorBajar button:hover {
+  padding: 10px;
+  background-color: #2D2D2D;
+  border-radius: 50px;
+}
+
+section {
+  padding-top: 80px;
+}
+
+/*# sourceMappingURL=style.css.map */
