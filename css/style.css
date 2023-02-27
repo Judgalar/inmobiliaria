@@ -1,3 +1,7 @@
+* {
+  transition: 0.3s;
+}
+
 body, html {
   margin: 0px;
   height: 100%;
@@ -29,16 +33,36 @@ body {
   border-right: 1px solid grey;
 }
 .barNav .container .contenedor .nav ul {
-  font-size: 15px;
+  font-size: 16px;
   display: flex;
-  flex-direction: row;
+  width: 100%;
   align-items: center;
+  justify-content: space-around;
   list-style: none;
-  gap: 25px;
+  gap: 10px;
 }
 .barNav .container .contenedor .nav ul a {
   text-decoration: none;
   color: white;
+}
+.barNav .container .contenedor .nav ul a:hover {
+  border-bottom: 5px solid white;
+  transition: 0.15s;
+}
+.barNav .container .contenedor .botonesResponsivo {
+  display: none;
+  gap: 10px;
+}
+.barNav .container .contenedor .botonesResponsivo button {
+  padding: 10px;
+  border: 0;
+  border-radius: 15px;
+  background-color: #2D2D2D;
+  transition: 0.3s;
+  color: white;
+}
+.barNav .container .contenedor .botonesResponsivo button:hover {
+  background-color: gray;
 }
 .barNav .container .botones {
   padding-left: 20px;
@@ -104,6 +128,9 @@ body {
   align-items: center;
   height: 90%;
 }
+.media .banner .contenedorBanner h1 {
+  text-shadow: 1px 1px 2px black;
+}
 .media .banner .contenedorBajar {
   display: flex;
   justify-content: center;
@@ -124,6 +151,26 @@ body {
 
 section {
   padding-top: 80px;
+}
+
+@media only screen and (max-width: 991px) {
+  .barNav {
+    height: auto;
+  }
+  .barNav .container {
+    width: 100%;
+  }
+  .barNav .container .contenedor {
+    width: 100%;
+    justify-content: space-between;
+    border: 0;
+  }
+  .barNav .container .contenedor .botonesResponsivo {
+    display: flex;
+  }
+  .barNav .container .botones {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
