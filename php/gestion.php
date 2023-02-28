@@ -156,7 +156,10 @@
         </div>
     </header>
     <section>
-        <div class="container d-flex" id="productos" style="flex-flow: row wrap; gap:20px; border: 1px solid black ">
+        <?php
+            echo '<center><h2>Tus Inmuebles</h2></center>';
+        ?>
+        <div class="container d-flex justify-content-center" id="productos" style="flex-flow: row wrap; gap:20px;">
             <?php
 
                 require_once('conexion.php');

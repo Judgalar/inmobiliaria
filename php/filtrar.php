@@ -156,12 +156,16 @@
         </div>
     </header>
     <section>
-        <div class="container d-flex" id="productos" style="flex-flow: row wrap; gap:20px; border: 1px solid black ">
+        <?php
+            $categoria = $_POST['categoria'];
+            echo '<center><h2>'.$categoria.'</h2></center>'; 
+        ?>
+        <div class="container d-flex justify-content-center" id="productos" style="flex-flow: row wrap; gap:20px;">
             <?php
 
                 require_once('conexion.php');
 
-                $categoria = $_POST['categoria']; echo $categoria;
+                
                 $resul = mysqli_query($conexion,"SELECT * FROM PRODUCTOS WHERE Categoria = '$categoria'") ;
             
                 foreach($resul as $row){
