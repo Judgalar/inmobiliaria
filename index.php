@@ -102,20 +102,23 @@
                 <div class="contenedorBanner">
                     <h1>De toda la vida, <span id="variable"></span></h1>
                     <div class="d-flex">
-                        <select class="form-select">
-                            <option selected>Viviendas</option>
-                            <option value="1">Pisos</option>
-                            <option value="2">Obra Nueva</option>
-                            <option value="3">Chalets</option>
-                            <option value="4">Locales</option>
-                            <option value="5">Oficinas</option>
-                            <option value="6">Naves</option>
-                            <option value="7">Edificios</option>
-                            <option value="8">Solares</option>
-                            <option value="9">Garajes</option>
-                            <option value="10">Fincas Rústicas</option>
-                            <option value="11">Únicos</option>
-                        </select>
+                        <form action="php/filtrar.php" method="post" class="d-flex">
+                            <select class="form-select" name="categoria">
+                                <option selected>Viviendas</option>
+                                <option value="Pisos">Pisos</option>
+                                <option value="ObraNueva">Obra Nueva</option>
+                                <option value="Chalets">Chalets</option>
+                                <option value="Locales">Locales</option>
+                                <option value="Oficinas">Oficinas</option>
+                                <option value="Naves">Naves</option>
+                                <option value="Edificios">Edificios</option>
+                                <option value="Solares">Solares</option>
+                                <option value="Garajes">Garajes</option>
+                                <option value="FincasRusticas">Fincas Rústicas</option>
+                                <option value="Unicos">Únicos</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary">Continuar</button>
+                        </form>
                     </div>
                 </div>
                 <div class="contenedorBajar">

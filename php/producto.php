@@ -32,7 +32,7 @@
                     <div class="collapse navbar-collapse nav" id="navbarNav">
                         <ul class="navbar-nav">
                             <a href="comprar.php"><li class="nav-item">Comprar</li></a>
-                            <a href=""><li class="nav-item">Vender</li></a>
+                            <a href="vender.php"><li class="nav-item">Vender</li></a>
                             <a href=""><li class="nav-item">Alquilar</li></a>
                             <a href=""><li class="nav-item">Nosotros</li></a>
                             <a href=""><li class="nav-item">Servicios</li></a>
@@ -112,7 +112,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="php/login.php" name="signup-form">
+                    <form method="post" action="login.php" name="signup-form">
                         <div class="mb-3">
                           <label for="InputUser" class="form-label">Usuario</label>
                           <input type="email" class="form-control" name="user" required>
@@ -135,7 +135,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="php/registro.php" name="signup-form">
+                    <form method="post" action="registro.php" name="signup-form">
                         <div class="mb-3">
                           <label for="InputUser" class="form-label">Usuario</label>
                           <input type="email" class="form-control" name="user" placeholder="E-mail" required>
@@ -156,21 +156,25 @@
         </div>
     </header>
     <section>
-        <div class="d-flex container" id="productos">
+        <div class="d-flex container">
             <?php
                 require_once('conexion.php');
                 
                 $producto = $_POST['producto'];
 
                 $resul = mysqli_query($conexion,"SELECT * FROM PRODUCTOS WHERE IdProducto = '$producto' ") ;
-
                 $data = $resul->fetch_assoc();
 
-            //    echo '<img src="data:image/jpeg;base64,'.base64_encode($data["Imagen"]).'" class="card-img-top" alt="...">';
+                $propietario = $data['Propietario'];
+                $usuario = mysqli_query($conexion,"SELECT * FROM USUARIOS  WHERE IdUsuario = $propietario ") ;
+                $arrUsuario = $usuario->fetch_assoc();
+
+                $images = mysqli_query($conexion,"SELECT * FROM IMAGENES WHERE Producto = '$producto' ") ;
+
             ?>
 
             <div style="width:50%;">
-                <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($data["Imagen"]).'" class="card-img-top" alt="...">'; ?>
+                <?php echo '<img src="../img/uploads/'.$data['Imagen'].'" class="card-img-top" alt="...">'; ?>
             </div>
             <div style="width:50%;" class="d-flex justify-content-center">
                 <?php echo '
@@ -207,11 +211,33 @@
                         </tr>
                         <tr>
                             <td>
+                                Precio: '. $data['Precio'].'€
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Teléfono de contacto: '.$arrUsuario['Telefono'].'
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 Descripcion: '. $data['Descripcion'].'
                             </td>
                         </tr>
+
                     </table>
                 '; ?>
+            </div>
+        </div>
+        <br>
+        <div class="container" style="gap:10px;">
+            <h2>Más Imagenes</h2>
+            <div class="d-flex" style="gap:10px; flex-flow: row wrap;">
+                <?php
+                    foreach($images as $row){
+                        echo '<img src="../img/uploads/'.$row['Nombre'].'" width="400px">';
+                    }
+                ?>
             </div>
         </div>
     </section>

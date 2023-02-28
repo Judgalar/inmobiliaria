@@ -32,7 +32,7 @@
                     <div class="collapse navbar-collapse nav" id="navbarNav">
                         <ul class="navbar-nav">
                             <a href="comprar.php"><li class="nav-item">Comprar</li></a>
-                            <a href="vender.php"><li class="nav-item">Vender</li></a>
+                            <a href=""><li class="nav-item">Vender</li></a>
                             <a href=""><li class="nav-item">Alquilar</li></a>
                             <a href=""><li class="nav-item">Nosotros</li></a>
                             <a href=""><li class="nav-item">Servicios</li></a>
@@ -156,67 +156,42 @@
         </div>
     </header>
     <section>
-        <div class="container d-flex" id="productos" style="flex-flow: row wrap; gap:20px; border: 1px solid black ">
+        <div class="d-flex container" id="productos">
             <?php
-
                 require_once('conexion.php');
+                
+                $producto = $_POST['producto'];
 
+                $resul = mysqli_query($conexion,"SELECT * FROM PRODUCTOS WHERE IdProducto = '$producto' ") ;
+                $data = $resul->fetch_assoc();
 
-                $resul = mysqli_query($conexion,"SELECT * FROM PRODUCTOS") ;
-
-                foreach($resul as $row){
-                    echo '
-                        <div class="card" style="width: 18rem;">
-                            <img src="../img/uploads/'.$row['Imagen'].'" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">'.$row['Nombre'].'</h5>
-                                <p class="card-text"> 
-                                    <table>
-                                        <tr>
-                                            <td>
-                                                Categoria: '. $row['Categoria'].'
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Pais: '. $row['Pais'].'
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Población: '. $row['Ciudad'].'
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Código Postal: '. $row['CP'].'
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Dirección: '. $row['Direccion'].'
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                        <td>
-                                            Precio: '. $row['Precio'].'€
-                                        </td>
-                                        </tr>
-                                    </table>
-                                </p>
-                                <form method = "post" action = "producto.php">
-                                    <input type = "text" name = "producto" style="display: none;" value="'.$row['IdProducto'].'"> 
-                                    <button type="submit" class="btn btn-primary">Ver</button>
-                                </form>
-                            </div>
-                        </div>
-                    ';
-                } 
+                $propietario = $data['Propietario'];
+                $usuario = mysqli_query($conexion,"SELECT * FROM USUARIOS  WHERE IdUsuario = $propietario ") ;
+                $arrUsuario = $usuario->fetch_assoc();
 
             ?>
+
+            <div style="width:50%;">
+                <?php echo '<img src="../img/uploads/'.$data['Imagen'].'" class="card-img-top" alt="...">'; ?>
+            </div>
+            <div style="width:50%;" class="d-flex justify-content-center">
+            <?php
+            if(!$_SESSION["usuario"]) echo '<h1>NECESITAS INICIAR SESIÓN</h1>';
+            else
+            echo '
+                <form method="post" action="PHPanadirImagen.php" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label">Imagen (jpg/jpeg/png)</label><br>
+                        <input type="file" name="imagen" accept="image/jpeg,image/jpg,image/png" required></textarea>
+                    </div>
+                    <input type = "text" name = "producto" style="display: none;" value="'.$producto.'"> 
+                    <button type="submit" class="btn btn-primary">Añadir Imagen</button>
+                </form>
+            ';
+        ?>
+            </div>
         </div>
     </section>
-
 
 </body>
 </html>

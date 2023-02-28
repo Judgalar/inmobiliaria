@@ -10,6 +10,7 @@ if (! $_POST
     || trim($_POST['direccion'])     === ''
     || trim($_POST['descripcion'])     === ''
     || trim($_POST['categoria'])     === ''
+    || trim($_POST['precio'])     === ''
     )
 {
 
@@ -24,6 +25,7 @@ else{
     $cp = $_POST['cp'];
     $direccion = $_POST['direccion'];
     $descripcion = $_POST['descripcion'];
+    $precio = $_POST['precio'];
 
     $nombreImagen = $_FILES['imagen']['name'];
     $tipoImagen = $_FILES['imagen']['type'];
@@ -40,8 +42,8 @@ else{
 
                 if( move_uploaded_file($_FILES['imagen']['tmp_name'],$carpetaDestino.$nombreImagen) ){ //MOVER LA IMAGEN DE TMP AL DIRECTORIO ESCOGIDO
 
-                    $query = mysqli_query($conexion,"INSERT INTO PRODUCTOS(Propietario,Categoria,Nombre,Pais,Ciudad,CP,Direccion,Descripcion,TipoImagen,Imagen) 
-                        VALUES('$propietario','$categoria','$nombre','$pais','$ciudad','$cp','$direccion','$descripcion','$tipoImagen','$nombreImagen');"); 
+                    $query = mysqli_query($conexion,"INSERT INTO PRODUCTOS(Propietario,Categoria,Nombre,Pais,Ciudad,CP,Direccion,Descripcion,Precio,TipoImagen,Imagen) 
+                        VALUES('$propietario','$categoria','$nombre','$pais','$ciudad','$cp','$direccion','$descripcion','$precio','$tipoImagen','$nombreImagen');"); 
                 
                     if ($query) {
                         echo "<script>alert('Registrado correctamente'); window.location = '../index.php'</script>";

@@ -21,6 +21,7 @@ create table PRODUCTOS (
     CP varchar(9) not null,
     Direccion varchar(90) not null,
     Descripcion varchar(90) not null,
+    Precio varchar(20) not null,
     TipoImagen varchar(20) NOT NULL,
     Imagen varchar(50) NOT NULL,
     FOREIGN KEY (Propietario) REFERENCES USUARIOS(IdUsuario)
@@ -30,7 +31,7 @@ CREATE TABLE IMAGENES (
     IdImagen int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     Tipo varchar(20) NOT NULL,
     Nombre varchar(20) NOT NULL,
-    RutaImagen varchar(50) NOT NULL,
+    Size varchar(10) NOT NULL,
     Producto int NOT NULL,
 
     FOREIGN KEY (Producto) REFERENCES PRODUCTOS(IdProducto)

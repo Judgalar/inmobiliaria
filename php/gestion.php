@@ -11,22 +11,28 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .barNav{
+            background-color: #2D2D2D;
+        }
+    </style>
 </head>
 <body>
+<body>
     <header>
-        <div class="barNav fixed-top" id="navBar">
+        <div class="barNav sticky-top" id="navBar">
             <div class="container">
                 <div class="contenedor navbar navbar-expand-lg navbar-dark ">
                     <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand logo" href="../index.html">
+                    <a class="navbar-brand logo" href="../index.php">
                         <img src="../img/gilmar-logo.png" height="40px">
                     </a>
                     <div class="collapse navbar-collapse nav" id="navbarNav">
                         <ul class="navbar-nav">
-                            <a href=""><li class="nav-item">Comprar</li></a>
-                            <a href=""><li class="nav-item">Vender</li></a>
+                            <a href="comprar.php"><li class="nav-item">Comprar</li></a>
+                            <a href="vender.php"><li class="nav-item">Vender</li></a>
                             <a href=""><li class="nav-item">Alquilar</li></a>
                             <a href=""><li class="nav-item">Nosotros</li></a>
                             <a href=""><li class="nav-item">Servicios</li></a>
@@ -43,8 +49,8 @@
                                             '.$_SESSION["usuario"].'
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li><a class="dropdown-item" href="php/gestion.php">Gestión</a></li>
-                                            <li><a class="dropdown-item" href="php/cerrarSesion.php">
+                                            <li><a class="dropdown-item" href="gestion.php">Gestión</a></li>
+                                            <li><a class="dropdown-item" href="cerrarSesion.php">
                                                 <button type="button" class="btn btn-danger">CERRAR SESIÓN</button>
                                             </a></li>
                                         </ul>
@@ -79,8 +85,8 @@
                                         '.$_SESSION["usuario"].'
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <li><a class="dropdown-item" href="php/gestion.php">Gestión</a></li>
-                                        <li><a class="dropdown-item" href="php/cerrarSesion.php">
+                                        <li><a class="dropdown-item" href="gestion.php">Gestión</a></li>
+                                        <li><a class="dropdown-item" href="cerrarSesion.php">
                                             <button type="button" class="btn btn-danger">CERRAR SESIÓN</button>
                                         </a></li>
                                     </ul>
@@ -97,9 +103,128 @@
                 </div>
             </div>
         </div>
-          
-          
+        
+        <div class="modal iniciarSesion" tabindex="-1" id="IniciarSesion">
+            <div class="modal-dialog modal-dialog-centered ">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Iniciar Sesión</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="login.php" name="signup-form">
+                        <div class="mb-3">
+                          <label for="InputUser" class="form-label">Usuario</label>
+                          <input type="email" class="form-control" name="user" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="InputPassword" class="form-label">Contraseña</label>
+                          <input type="password" class="form-control" name="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Continuar</button>
+                    </form>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="modal Registro" tabindex="-1" id="Registro">
+            <div class="modal-dialog modal-dialog-centered ">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">REGISTRO</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="registro.php" name="signup-form">
+                        <div class="mb-3">
+                          <label for="InputUser" class="form-label">Usuario</label>
+                          <input type="email" class="form-control" name="user" placeholder="E-mail" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="InputPassword" class="form-label">Contraseña</label>
+                          <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="InputTelefono" class="form-label">Teléfono</label>
+                          <input type="tel" class="form-control" name="telefono" placeholder="Teléfono" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Continuar</button>
+                    </form>
+                </div>
+              </div>
+            </div>
+        </div>
     </header>
+    <section>
+        <div class="container d-flex" id="productos" style="flex-flow: row wrap; gap:20px; border: 1px solid black ">
+            <?php
+
+                require_once('conexion.php');
+
+                $idUsuario = $_SESSION["idUsuario"];
+
+                $resul = mysqli_query($conexion,"SELECT * FROM PRODUCTOS WHERE Propietario = $idUsuario") ;
+
+                foreach($resul as $row){
+                    echo '
+                        <div class="card" style="width: 18rem;">
+                            <img src="../img/uploads/'.$row['Imagen'].'" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">'.$row['Nombre'].'</h5>
+                                <p class="card-text"> 
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                Categoria: '. $row['Categoria'].'
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Pais: '. $row['Pais'].'
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Población: '. $row['Ciudad'].'
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Código Postal: '. $row['CP'].'
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Dirección: '. $row['Direccion'].'
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                        <td>
+                                            Precio: '. $row['Precio'].'€
+                                        </td>
+                                        </tr>
+                                    </table>
+                                </p>
+                                <div class="d-flex" style="gap: 10px"> 
+                                    <form method = "post" action = "modificarProducto.php">
+                                    <input type = "text" name = "producto" style="display: none;" value="'.$row['IdProducto'].'"> 
+                                    <button type="submit" class="btn btn-primary">Gestionar</button>
+                                    </form>
+                                    <form method = "post" action = "anadirImagen.php">
+                                        <input type = "text" name = "producto" style="display: none;" value="'.$row['IdProducto'].'"> 
+                                        <button type="submit" class="btn btn-secondary">Añadir foto</button>
+                                    </form>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    ';
+                } 
+
+            ?>
+        </div>
+    </section>
+
 
 </body>
 </html>

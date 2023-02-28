@@ -186,20 +186,24 @@
                     <textarea class="form-control" rows="3" name="descripcion" required></textarea>
                 </div>
                 <div class="mb-3">
+                    <label class="form-label">Precio</label>
+                    <input type="text" class="form-control" name="precio" required>
+                </div>
+                <div class="mb-3">
                     <label class="form-label">Categoría</label>
                     <select class="form-select" name="categoria" required>
                         <option selected>Viviendas</option>
-                        <option value="1">Pisos</option>
-                        <option value="2">Obra Nueva</option>
-                        <option value="3">Chalets</option>
-                        <option value="4">Locales</option>
-                        <option value="5">Oficinas</option>
-                        <option value="6">Naves</option>
-                        <option value="7">Edificios</option>
-                        <option value="8">Solares</option>
-                        <option value="9">Garajes</option>
-                        <option value="10">Fincas Rústicas</option>
-                        <option value="11">Únicos</option>
+                        <option value="Pisos">Pisos</option>
+                        <option value="ObraNueva">Obra Nueva</option>
+                        <option value="Chalets">Chalets</option>
+                        <option value="Locales">Locales</option>
+                        <option value="Oficinas">Oficinas</option>
+                        <option value="Naves">Naves</option>
+                        <option value="Edificios">Edificios</option>
+                        <option value="Solares">Solares</option>
+                        <option value="Garajes">Garajes</option>
+                        <option value="FincasRusticas">Fincas Rústicas</option>
+                        <option value="Unicos">Únicos</option>
                     </select>
                 </div>
                 <div class="mb-3">

@@ -32,7 +32,7 @@
                     <div class="collapse navbar-collapse nav" id="navbarNav">
                         <ul class="navbar-nav">
                             <a href="comprar.php"><li class="nav-item">Comprar</li></a>
-                            <a href="vender.php"><li class="nav-item">Vender</li></a>
+                            <a href=""><li class="nav-item">Vender</li></a>
                             <a href=""><li class="nav-item">Alquilar</li></a>
                             <a href=""><li class="nav-item">Nosotros</li></a>
                             <a href=""><li class="nav-item">Servicios</li></a>
@@ -156,67 +156,85 @@
         </div>
     </header>
     <section>
-        <div class="container d-flex" id="productos" style="flex-flow: row wrap; gap:20px; border: 1px solid black ">
+        <div class="d-flex container" id="productos">
             <?php
-
                 require_once('conexion.php');
+                
+                $producto = $_POST['producto'];
 
+                $resul = mysqli_query($conexion,"SELECT * FROM PRODUCTOS WHERE IdProducto = '$producto' ") ;
+                $data = $resul->fetch_assoc();
 
-                $resul = mysqli_query($conexion,"SELECT * FROM PRODUCTOS") ;
-
-                foreach($resul as $row){
-                    echo '
-                        <div class="card" style="width: 18rem;">
-                            <img src="../img/uploads/'.$row['Imagen'].'" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">'.$row['Nombre'].'</h5>
-                                <p class="card-text"> 
-                                    <table>
-                                        <tr>
-                                            <td>
-                                                Categoria: '. $row['Categoria'].'
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Pais: '. $row['Pais'].'
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Población: '. $row['Ciudad'].'
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Código Postal: '. $row['CP'].'
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Dirección: '. $row['Direccion'].'
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                        <td>
-                                            Precio: '. $row['Precio'].'€
-                                        </td>
-                                        </tr>
-                                    </table>
-                                </p>
-                                <form method = "post" action = "producto.php">
-                                    <input type = "text" name = "producto" style="display: none;" value="'.$row['IdProducto'].'"> 
-                                    <button type="submit" class="btn btn-primary">Ver</button>
-                                </form>
-                            </div>
-                        </div>
-                    ';
-                } 
+                $propietario = $data['Propietario'];
+                $usuario = mysqli_query($conexion,"SELECT * FROM USUARIOS  WHERE IdUsuario = $propietario ") ;
+                $arrUsuario = $usuario->fetch_assoc();
 
             ?>
+
+            <div style="width:50%;">
+                <?php echo '<img src="../img/uploads/'.$data['Imagen'].'" class="card-img-top" alt="...">'; ?>
+            </div>
+            <div style="width:50%;" class="d-flex justify-content-center">
+            <?php
+            if(!$_SESSION["usuario"]) echo '<h1>NECESITAS INICIAR SESIÓN</h1>';
+            else
+            echo '
+                <form method="post" action="PHPmodificarProducto.php" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" value="'.$data['Nombre'].'" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">País</label>
+                        <input type="text" class="form-control" name="pais" value="'.$data['Pais'].'" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Ciudad</label>
+                        <input type="text" class="form-control" name="ciudad" value="'.$data['Ciudad'].'" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">CP</label>
+                        <input type="text" class="form-control" name="cp" value="'.$data['CP'].'" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Dirección</label>
+                        <input type="text" class="form-control" name="direccion" value="'.$data['Direccion'].'" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Descripción</label>
+                        <textarea class="form-control" rows="3" name="descripcion" required>'.$data['Descripcion'].'</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Precio</label>
+                        <input type="text" class="form-control" name="precio" value="'.$data['Precio'].'" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Categoría</label>
+                        <select class="form-select" name="categoria" required>
+                        
+                            <option selected>'.$data['Categoria'].'</option>
+                            <option value="Viviendas">Viviendas</option>
+                            <option value="Pisos">Pisos</option>
+                            <option value="ObraNueva">Obra Nueva</option>
+                            <option value="Chalets">Chalets</option>
+                            <option value="Locales">Locales</option>
+                            <option value="Oficinas">Oficinas</option>
+                            <option value="Naves">Naves</option>
+                            <option value="Edificios">Edificios</option>
+                            <option value="Solares">Solares</option>
+                            <option value="Garajes">Garajes</option>
+                            <option value="FincasRusticas">Fincas Rústicas</option>
+                            <option value="Unicos">Únicos</option>
+                        </select>
+                    </div>
+                    <input type = "text" name = "producto" style="display: none;" value="'.$producto.'"> 
+                    <button type="submit" class="btn btn-primary">Modificar Producto</button>
+                </form>
+            ';
+        ?>
+            </div>
         </div>
     </section>
-
 
 </body>
 </html>

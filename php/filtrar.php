@@ -161,9 +161,9 @@
 
                 require_once('conexion.php');
 
-
-                $resul = mysqli_query($conexion,"SELECT * FROM PRODUCTOS") ;
-
+                $categoria = $_POST['categoria']; echo $categoria;
+                $resul = mysqli_query($conexion,"SELECT * FROM PRODUCTOS WHERE Categoria = '$categoria'") ;
+            
                 foreach($resul as $row){
                     echo '
                         <div class="card" style="width: 18rem;">
