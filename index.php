@@ -1,5 +1,7 @@
 <?php
-    session_start();
+   session_start();
+   if(!isset($_SESSION["usuario"])) $_SESSION["usuario"] = "invitado";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,43 +38,50 @@
                     </div>
                     <div class="botonesResponsivo">
                         <?php
-                            if($_SESSION["usuario"]){
+                            
+                            if($_SESSION["usuario"] == 'invitado'){
                                 echo '
-                                    <div class="dropdown">
-                                        <button class="button" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            '.$_SESSION["usuario"].'
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li><a class="dropdown-item" href="php/gestion.php">Gestión</a></li>
-                                            <li><a class="dropdown-item" href="php/cerrarSesion.php">
-                                                <button type="button" class="btn btn-danger">CERRAR SESIÓN</button>
-                                            </a></li>
-                                        </ul>
-                                    </div>
+                                    <button class="button" data-bs-toggle="modal" data-bs-target="#IniciarSesion">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                        </svg>
+                                    </button>
+                                    <button class="button" data-bs-toggle="modal" data-bs-target="#Registro">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
+                                            <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
+                                            <path d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
+                                        </svg>
+                                    </button>
                                 ';
                             }
-                            else echo '
-                
-                                <button class="button" data-bs-toggle="modal" data-bs-target="#IniciarSesion">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                                    </svg>
-                                </button>
-                                <button class="button" data-bs-toggle="modal" data-bs-target="#Registro">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
-                                        <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
-                                        <path d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
-                                    </svg>
-                                </button>
-                                
-                            '
+                            else
+                            echo '
+                                <div class="dropdown">
+                                    <button class="button" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        '.$_SESSION["usuario"].'
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li><a class="dropdown-item" href="php/gestion.php">Gestión</a></li>
+                                        <li><a class="dropdown-item" href="php/cerrarSesion.php">
+                                            <button type="button" class="btn btn-danger">CERRAR SESIÓN</button>
+                                        </a></li>
+                                    </ul>
+                                </div>
+                            ';
                         ?>
                     </div>
                 </div>
                 <div class="botones">
                     <?php
-                        if($_SESSION["usuario"]){
+                        if($_SESSION["usuario"] == 'invitado'){
+                            echo '
+                            <button class="button1" data-bs-toggle="modal" data-bs-target="#IniciarSesion">Acceso</button>
+                            <button class="button2" data-bs-toggle="modal" data-bs-target="#Registro">Registro</button>
+                            ';
+
+                        }
+                        else{
                             echo '
                                 <div class="dropdown">
                                     <button class="button1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -85,12 +94,6 @@
                                         </a></li>
                                     </ul>
                                 </div>
-                            ';
-                        }
-                        else{
-                            echo '
-                                <button class="button1" data-bs-toggle="modal" data-bs-target="#IniciarSesion">Acceso</button>
-                                <button class="button2" data-bs-toggle="modal" data-bs-target="#Registro">Registro</button>
                             ';
                         }
                     ?>
