@@ -40,7 +40,21 @@ CREATE TABLE IMAGENES (
 
 
 
-insert into USUARIOS(Correo, Clave, Telefono) 
-values ('admin@admin', 'admin', '666666666');
+INSERT INTO `USUARIOS` (`IdUsuario`, `Correo`, `Clave`, `Telefono`) VALUES
+(1, 'admin@admin', 'admin', '666666666'),
+(2, 'usuario@usuario', 'usuario', '123456789');
  
- 
+INSERT INTO `IMAGENES` (`IdImagen`, `Tipo`, `Nombre`, `Size`, `Producto`) VALUES
+(1, 'image/jpeg', 'ergegrd.jpeg', '6695', 1),
+(2, 'image/jpeg', 'ergerger.jpeg', '7724', 1),
+(3, 'image/jpeg', 'ergergerg.jpeg', '9096', 2),
+(4, 'image/jpeg', 'fefedfcedffg.jpeg', '5969', 2),
+(5, 'image/jpeg', 'fefefedfedfe.jpeg', '7410', 2),
+(6, 'image/jpeg', 'feferg.jpeg', '7650', 2),
+(7, 'image/jpeg', 'feffedfgw.jpeg', '5879', 2),
+(8, 'image/jpeg', 'sedzbserh.jpeg', '4430', 2),
+(9, 'image/jpeg', '1032875792.jpg', '45262', 2);
+
+INSERT INTO `PRODUCTOS` (`IdProducto`, `Propietario`, `Categoria`, `Nombre`, `Pais`, `Ciudad`, `CP`, `Direccion`, `Descripcion`, `Precio`, `TipoImagen`, `Imagen`) VALUES
+(1, 1, 'Chalets', 'Casa de alffweed', 'España', 'Cullar', '18850', 'C/fefewer 79', 'Hola Amigos', '500000', 'image/jpeg', 'casa1.jpg'),
+(2, 2, 'Pisos', 'Piso en Madrid', 'España', 'Madrid', '12121313', 'C/fdw9uiofcw', 'Piso en Madrid 0ewwe eoicvne\r\nfepwjogvwegewgv', '400000', 'image/jpeg', 'piso.jpeg');
