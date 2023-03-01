@@ -32,12 +32,12 @@
                     <div class="collapse navbar-collapse nav" id="navbarNav">
                         <ul class="navbar-nav">
                             <a href="comprar.php"><li class="nav-item">Comprar</li></a>
-                            <a href=""><li class="nav-item">Vender</li></a>
-                            <a href=""><li class="nav-item">Alquilar</li></a>
-                            <a href=""><li class="nav-item">Nosotros</li></a>
-                            <a href=""><li class="nav-item">Servicios</li></a>
-                            <a href=""><li class="nav-item">Blog</li></a>
-                            <a href=""><li class="nav-item">Contacto</li></a>
+                            <a href="vender.php"><li class="nav-item">Vender</li></a>
+                            <a href=""><li class="nav-link disabled">Alquilar</li></a>
+                            <a href=""><li class="nav-link disabled">Nosotros</li></a>
+                            <a href=""><li class="nav-link disabled">Servicios</li></a>
+                            <a href=""><li class="nav-link disabled">Blog</li></a>
+                            <a href=""><li class="nav-link disabled">Contacto</li></a>
                         </ul>
                     </div>
                     <div class="botonesResponsivo">

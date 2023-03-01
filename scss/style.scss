@@ -149,6 +149,50 @@ body{
 
 section{
     padding-top: 80px;
+    padding-bottom: 80px;
+}
+.contenedorSeccion{
+    display: flex;
+    flex-direction: column;
+    .filaContenedor{
+        .item{
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 360px;
+            margin: 15px;
+            span{
+                background-color: white;
+                padding: 10px 20px ;
+            }
+        }
+    }
+}
+.viviendas{
+    background-image: url(../img/viviendas-570x360.jpg.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.obraNueva{
+    background-image: url(../img/obra-nueva-570x360.jpg.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.pisos{
+    background-image: url(../img/alquileres-370x360.jpg.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.locales{
+    background-image: url(../img/locales-inversiones-370x360.jpg.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.fincasRusticas{
+    background-image: url(../img/fincas-rusticas-370x360.jpg.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 

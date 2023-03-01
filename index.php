@@ -29,11 +29,11 @@
                         <ul class="navbar-nav">
                             <a href="php/comprar.php"><li class="nav-item">Comprar</li></a>
                             <a href="php/vender.php"><li class="nav-item">Vender</li></a>
-                            <a href=""><li class="nav-item">Alquilar</li></a>
-                            <a href=""><li class="nav-item">Nosotros</li></a>
-                            <a href=""><li class="nav-item">Servicios</li></a>
-                            <a href=""><li class="nav-item">Blog</li></a>
-                            <a href=""><li class="nav-item">Contacto</li></a>
+                            <a href=""><li class="nav-link disabled">Alquilar</li></a>
+                            <a href=""><li class="nav-link disabled">Nosotros</li></a>
+                            <a href=""><li class="nav-link disabled">Servicios</li></a>
+                            <a href=""><li class="nav-link disabled">Blog</li></a>
+                            <a href=""><li class="nav-link disabled">Contacto</li></a>
                         </ul>
                     </div>
                     <div class="botonesResponsivo">
@@ -187,77 +187,96 @@
           
     </header>
     <section id="section1">
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-
-        Lorem ipsum dolor sit amet. <br>Lorem ipsum dolor sit amet. <br>
-
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
-        Lorem ipsum dolor sit amet. <br>
+        <form class="container" method="post" action="php/filtrar.php">
+            <center><h1>Oferta inmobiliaria</h1></center>
+            <center><h5>Descubre la mejor y más amplia oferta inmobiliaria con nosotros.</h5></center>     
+            <center><h5>Desde 1983 ayudándote a encontrar la casa de tus sueños.</h5></center>
+            <div class="container contenedorSeccion">
+                <div class="row filaContenedor">
+                    <button class="col item viviendas" type="submit" value="Viviendas" name="categoria">
+                        <span><h5>VIVIENDAS</h5></span>
+                    </button>
+                    <button class="col item obraNueva" type="submit" value="ObraNueva" name="categoria">
+                        <span><h5>OBRA NUEVA</h5></span>
+                    </button>
+                </div>
+                <div class="row filaContenedor">
+                    <button class="col item pisos" type="submit" value="Pisos" name="categoria">
+                        <span><h5>PISOS</h5></span>
+                    </button>
+                    <button class="col item locales" type="submit" value="Locales" name="categoria">
+                        <span><h5>LOCALES</h5></span>
+                    </button>
+                    <button class="col item fincasRusticas" type="submit" value="FincasRusticas" name="categoria">
+                        <span><h5>FINCAS RÚSTICAS</h5></span>
+                    </button>
+                </div>
+            </div>
+        </form>
     </section>
+    
+    <div data-bs-theme="dark" class="p-3 text-body bg-body">
+        <div class="container">
+            <footer class="py-5">
+                <div class="row">
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Section</h5>
+                    <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Section</h5>
+                    <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Section</h5>
+                    <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-5 offset-md-1 mb-3">
+                    <form>
+                    <h5>Subscribe to our newsletter</h5>
+                    <p>Monthly digest of what's new and exciting from us.</p>
+                    <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                        <label for="newsletter1" class="visually-hidden">Email address</label>
+                        <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+                        <button class="btn btn-primary" type="button">Subscribe</button>
+                    </div>
+                    </form>
+                </div>
+                </div>
+
+                <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                <p>© 2023 Juan Diego. All rights reserved.</p>
+                <ul class="list-unstyled d-flex">
+                    <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
+                    <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
+                    <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+                </ul>
+                </div>
+            </footer>
+        </div>
+    </div>
+
     <script src="js/navBar.js"></script>
     <script src="js/variableBanner.js"></script>
 </body>
