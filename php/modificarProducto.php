@@ -180,6 +180,7 @@
             if(!$_SESSION["usuario"]) echo '<h1>NECESITAS INICIAR SESIÓN</h1>';
             else
             echo '
+                <div class="container d-flex" style="flex-direction: column; gap: 30px;">
                 <form method="post" action="PHPmodificarProducto.php" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label class="form-label">Nombre</label>
@@ -231,6 +232,11 @@
                     <input type = "text" name = "producto" style="display: none;" value="'.$producto.'"> 
                     <button type="submit" class="btn btn-primary">Modificar Producto</button>
                 </form>
+                <form method="post" action="PHPeliminarProducto.php">
+                    <input type = "text" name = "producto" style="display: none;" value="'.$data['IdProducto'].'"> 
+                    <button type="submit" class="btn btn-danger">Eliminar Producto</button>
+                </form>
+                </div>
             ';
         ?>
             </div>

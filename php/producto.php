@@ -179,7 +179,7 @@
             </div>
             <div style="width:50%;" class="d-flex justify-content-center">
                 <?php echo '
-                    <table>
+                    <table class="bg-light" style="padding:20px;">
                         <tr>
                             <td>
                                 Nombre: '. $data['Nombre'].'

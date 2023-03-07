@@ -276,7 +276,6 @@
             </footer>
         </div>
     </div>
-
     <script src="js/navBar.js"></script>
     <script src="js/variableBanner.js"></script>
 </body>

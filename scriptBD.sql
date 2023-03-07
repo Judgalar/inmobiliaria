@@ -8,7 +8,9 @@ create table USUARIOS (
     IdUsuario int AUTO_INCREMENT primary key not null,
     Correo varchar(80) unique not null,
     Clave varchar(45) not null,
-    Telefono varchar(9) not null
+    Telefono varchar(9) not null,
+    Administrador BOOLEAN DEFAULT 0
+    
 );
 
 create table PRODUCTOS (
@@ -34,14 +36,17 @@ CREATE TABLE IMAGENES (
     Size varchar(10) NOT NULL,
     Producto int NOT NULL,
 
-    FOREIGN KEY (Producto) REFERENCES PRODUCTOS(IdProducto)
+    FOREIGN KEY (Producto) REFERENCES PRODUCTOS(IdProducto) ON DELETE CASCADE
+   
 );
 
 
 
 
+INSERT INTO `USUARIOS` (`IdUsuario`, `Correo`, `Clave`, `Telefono`,`Administrador`) VALUES
+(1, 'admin@admin', 'admin', '666666666',1);
+
 INSERT INTO `USUARIOS` (`IdUsuario`, `Correo`, `Clave`, `Telefono`) VALUES
-(1, 'admin@admin', 'admin', '666666666'),
 (2, 'usuario@usuario', 'usuario', '123456789');
  
 INSERT INTO `PRODUCTOS` (`IdProducto`, `Propietario`, `Categoria`, `Nombre`, `Pais`, `Ciudad`, `CP`, `Direccion`, `Descripcion`, `Precio`, `TipoImagen`, `Imagen`) VALUES

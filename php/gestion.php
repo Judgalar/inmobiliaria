@@ -167,8 +167,14 @@
 
                 $idUsuario = $_SESSION["idUsuario"];
 
-                $resul = mysqli_query($conexion,"SELECT * FROM PRODUCTOS WHERE Propietario = $idUsuario") ;
+                $adminQuery = mysqli_query($conexion,"SELECT Administrador FROM USUARIOS WHERE IdUsuario = $idUsuario")  ;
+                $esAdmin = mysqli_fetch_row($adminQuery);
 
+                $resul = mysqli_query($conexion,"SELECT * FROM PRODUCTOS WHERE Propietario = $idUsuario") ;
+                if($esAdmin[0]==1){
+                    $resul = mysqli_query($conexion,"SELECT * FROM PRODUCTOS") ;
+                } 
+                
                 foreach($resul as $row){
                     echo '
                         <div class="card" style="width: 18rem;">
